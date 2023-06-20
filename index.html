@@ -34,6 +34,13 @@
     <link href="css/owl.theme.default.min.css" rel="stylesheet" />
 
     <link href="css/templatemo-medic-care.css" rel="stylesheet" />
+
+    <!-- custom styles -->
+    <style>
+      .submitButton:hover {
+        cursor: pointer;
+      }
+    </style>
   </head>
 
   <body id="top">
@@ -446,7 +453,7 @@
               <div class="booking-form">
                 <h2 class="text-center mb-lg-3 mb-2">Book an appointment</h2>
 
-                <form name="myForm" method="get">
+                <form name="myForm">
                   <div class="row">
                     <div class="col-lg-6 col-12">
                       <input
@@ -503,13 +510,13 @@
                     </div>
 
                     <div class="col-lg-3 col-md-4 col-6 mx-auto">
-                      <button
-                        type="submit"
-                        class="form-control"
+                      <div
+                        class="form-control text-center submitButton"
                         id="submit-button"
+                        onclick="buttonClick()"
                       >
                         Book Now
-                      </button>
+                      </div>
                     </div>
                   </div>
                 </form>
@@ -581,17 +588,18 @@
     <script src="js/custom.js"></script>
 
     <script>
-      document
-        .getElementById("myForm")
-        .addEventListener("submit", function (event) {
-          event.preventDefault(); // Prevent the default form submission
+      let validEmailRegex =
+        /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
 
-          // Perform actions with the form data here
-          // You can use AJAX to send the data to a server asynchronously if needed
+      function buttonClick() {
+        let name = document.forms["myForm"]["name"].value;
+        let email = document.forms["myForm"]["email"].value;
 
-          // Example: Display a message on the page
-          alert("Email sent successfully");
-        });
+        if (!name.trim() || !email.trim())
+          return alert("Name and Email is required");
+        if (!email.match(validEmailRegex)) return alert("Enter valid email");
+        alert("Email Sent");
+      }
     </script>
   </body>
 </html>
