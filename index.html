@@ -446,7 +446,7 @@
               <div class="booking-form">
                 <h2 class="text-center mb-lg-3 mb-2">Book an appointment</h2>
 
-                <form role="form" action="#booking" method="post">
+                <form name="myForm" role="form" method="post">
                   <div class="row">
                     <div class="col-lg-6 col-12">
                       <input
@@ -579,5 +579,19 @@
     <script src="js/owl.carousel.min.js"></script>
     <script src="js/scrollspy.min.js"></script>
     <script src="js/custom.js"></script>
+
+    <script>
+      document
+        .getElementById("myForm")
+        .addEventListener("submit", function (event) {
+          event.preventDefault(); // Prevent the default form submission
+
+          // Perform actions with the form data here
+          // You can use AJAX to send the data to a server asynchronously if needed
+
+          // Example: Display a message on the page
+          alert("Email sent successfully");
+        });
+    </script>
   </body>
 </html>
